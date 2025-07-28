@@ -7463,15 +7463,15 @@ L355E
 ; L355F
 msg_table
 ;00
-    !tx "Syntaxfehler in Formatzeile",$0D
+    !tx "Syntax chyba ve Formát. radku",$0D
 ;01
     !tx "Schnipp",$0D
 ;02
-    !tx "Bereichsfehler",$0D
+    !tx "Chyba rozsahu",$0D
 ;03
     !tx "Chyba!",$0d
 ;04
-    !tx "Speicher",$7D,"berlauf",$0D
+    !tx "Preteceni pameti",$0D
 ;05
     !tx "Kter",$82," p",$86,"lka (1/2)?",$0D
 ;06
@@ -7500,15 +7500,15 @@ msg_table
 ; 0b, $3668
     !tx "P",$8F,$84,"kaz",$7C,$0D
 ; 0c, $3670
-    !tx "Freie Zeichen:",$0D
+    !tx "Volnych znaku",$7C,$0D
 ; 0d, $367F
-    !tx "F1=Text, F3=Schirm, F5=Rahmen, F7=Mark.",$0D 
+    !tx "F1=Text, F3=Obraz, F5=Okraj, F7=Oznac.",$0D 
 ; 0e, $36A7
     !tx $3B,"A",$3A,"v",$90,"echno nebo ",$3B,"B",$3A,$8A,$82,"st?",$0D
 ; 0f, $36BF
     !tx "Jm",$83,"no",$7C,$0D
 ; 10, $36C5
-    !tx "<G>esamtbild oder <B>ildschirm?",$0D
+    !tx "<G> celkovy obraz nebo <B> obrazovka?",$0D
 ; 11, $36E5
     !tx "Opravdu konec (j)?",$0D
 ; 12, $36FB
@@ -7517,20 +7517,20 @@ msg_table
     !tx "ZS",$0D
 ; 14, $370D
 !if VERSION = 1.2 {
-    !tx "Zeichensatzdiskette einlegen",$0D
+    !tx "Zalozit znakovou disketu",$0D
 }
 !if VERSION = 1.3 {
     !tx "ZS Disk:",$0D
 }
 ; 15, $372A
-    !tx "Programmdiskette einlegen",$0D
+    !tx "Zalozit programovy disk",$0D
 ; 16, $3744
-    !tx "Sorry, nichts da",$0D
+    !tx "Sorry, neni tam!",$0D
 ; 17, $3755
     !tx "Smazat grafiku (j/n)?",$0D
 ; 18, $376B
 !if VERSION = 1.2 {
-    !tx "Erweiterungsdisk einlegen",$0D
+    !tx "Zalozit rozsireny disk",$0D
     }
 !if VERSION = 1.3 {
     !tx "EW Disk",$7C,$0D
@@ -7538,13 +7538,13 @@ msg_table
 ; 19, $3785
     !tx "Hledat",$7C,$0D
 ; 1a, $378D
-    !tx "Neu",$7C,$0D
+    !tx "Novy",$7C,$0D
 ; 1b, $3792
-    !tx "Gro",$7E,"/klein beachten (j/n)?",$0D
+    !tx "Rozlisit velka/mala (j/n)?",$0D
 ; 1c, $37AD
-    !tx "RETURN=Dale",$0D
+    !tx "RETURN=D",$82,"le",$0D
 ; 1d, $37BB
-    !tx "RETURN=Ersetzen, SPACE=",$5D,"berspringen",$0D
+    !tx "RETURN=Nahradit, SPACE=",$5D,"preskocit",$0D
 
 !if VERSION = 1.3 {
 ; 1e
