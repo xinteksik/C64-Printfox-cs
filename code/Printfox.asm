@@ -7988,7 +7988,7 @@ L3D43
 !if VERSION = 1.3 {
     !tx $0D,"            von  Hans Haberl            "
     !by $0D
-    !tx $0D,"            V1.3 (b2) by T.K.           "
+    !tx $0D,"       V1.3 (b2) by C.S. and T.K.       "
 }
 
     !by $0D
