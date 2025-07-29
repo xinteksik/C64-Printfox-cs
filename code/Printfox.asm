@@ -39,17 +39,17 @@
 
 
 
-!source "c64symb.asm"
+!source "../code/c64symb.asm"
 
 ; select the version here
 VERSION = 1.3
 
 
 !if VERSION = 1.2 {
-    !to"build/fox1.2.prg",cbm
+    !to"../build/fox1.2.prg",cbm
 }
 !if VERSION = 1.3 {
-    !to"build/fox1.3.prg",cbm
+    !to"../build/fox1.3.prg",cbm
 }
 
 ; Start address
