@@ -9,5 +9,5 @@ This project is based on C64-Printfox by Claus Schlereth (MIT License).
 - klávesnice a znaky jsou snad všechny opraveny
 - hlášky jsou také převážně všechny a s částečnou diakritikou
 - opravil jsem i ostré závorky v tiskovýh souborech (;:)
-- doplnil jsem obraz diskety obsahující fonty a upravenou verzi XF (načtení po CTRL + x) pro podporu REU (v grafickém módu F5 přepíná poloviny obrazu)
+- doplnil jsem obraz diskety [Printfox v1.3 2025 cs.d81](Printfox v1.3 2025 cs.d81) obsahující fonty a upravenou verzi XF (načtení po CTRL + x) pro podporu REU (v grafickém módu F5 přepíná poloviny obrazu)
 - verze 1.3 umí fungovat i z jiné mechaniky dle číselného označení
