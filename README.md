@@ -5,4 +5,8 @@ This project is based on C64-Printfox by Claus Schlereth (MIT License).
 #### PrintFox 1.3 cs Screenshot
 <img width="845" height="636" alt="screen01" src="https://github.com/user-attachments/assets/8da4f173-f14b-4458-936c-93abaf0aa9bd" />
 
-Stav překladu - klávesnice 99%, hlášky 80% a počeštění hlášek 40%. 
+#### Stav překladu
+- klávesnice a znaky jsou snad všechny
+- hlášky jsou také převážně také všechny a s částečnou diakritikou
+- opravil jsem i ostré závorky v tiskovýh souborech (;:)
+- doplnil jsem obraz diskety obsahující fonty a upravenou verzi XF (načtení po CTRL + x) pro podporu REU (v grafickém módu F5 přepíná poloviny obrazu)
