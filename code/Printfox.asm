@@ -7465,7 +7465,7 @@ msg_table
 ;00
     !tx "Syntax chyba ve Formát. radku",$0D
 ;01
-    !tx "Schnipp",$0D
+    !tx "Generuji",$0D
 ;02
     !tx "Chyba rozsahu",$0D
 ;03
@@ -7520,7 +7520,7 @@ msg_table
     !tx "Zalo",$3E,"it znakovou disketu",$0D
 }
 !if VERSION = 1.3 {
-    !tx "ZS Disk:",$0D
+    !tx "ZS Disk",$7C,$0D
 }
 ; 15, $372A
     !tx "Zalo",$3E,"it programov",$7E," disk",$0D
