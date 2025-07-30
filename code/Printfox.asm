@@ -784,7 +784,7 @@ L0BE4
     BEQ L0C36
     LDA #$12                        ; msg. No. "Mischen (j/n)?"
     LDX #$4E                        ; "N"
-    LDY #$4A                        ; "J"
+    LDY #$41                        ; "A"
     JSR L1B89
     BCS L0C36
     STA $39
@@ -800,8 +800,8 @@ L0BE4
 L0C06
     JSR L08CD                       ; check C= key, prepare screen if found
     LDA #$10                        ; msg. No. "<G>esamtbild oder <B>ildschirm?"
-    LDX #$47                        ; "G"
-    LDY #$42                        ; "B"
+    LDX #$43                        ; "C"
+    LDY #$56                        ; "V"
 
 !if VERSION = 1.2 {
     JSR L1B89
@@ -4584,8 +4584,8 @@ L22EF
 }
 
     LDA #$0E                        ; msg. No. "<A>lles oder <B>ereich?"
-    LDX #$41                        ; "A"
-    LDY #$42                        ; "B"
+    LDX #$56                        ; "V"
+    LDY #$43                        ; "C"
     JSR L34E3
     BCS L2354
     BEQ L2314
@@ -4656,7 +4656,7 @@ L2362
 L2370
     LDA #$12                        ; msg. No. "Mischen (j/n)?"
     LDX #$4E                        ; "N"
-    LDY #$4A                        ; "J"
+    LDY #$41                        ; "A"
     JSR L34E3
     BCS L23DF
 L237B
@@ -5013,7 +5013,7 @@ L25B5
     JSR L2643
     BCS L25E4
     LDA #$1B                        ; msg. No. "Gro",$7E,"/klein beachten (j/n)?"
-    LDX #$4A                        ; "J"
+    LDX #$41                        ; "A"
     LDY #$4E                        ; "N"
     JSR L34E3
     BCS L25E4
@@ -5044,7 +5044,7 @@ L25EA
     JSR L2643
     BCS L25E4
     LDA #$1B                        ; msg. No. "Gro",$7E,"/klein beachten (j/n)?"
-    LDX #$4A                        ; "J"
+    LDX #$41                        ; "A"
     LDY #$4E                        ; "N"
     JSR L34E3
     BCS L25E4
@@ -5375,7 +5375,7 @@ L27F4
 ; ---------------------------------
 L27FB
     LDA #$11                        ; msg. No. "Wirklich beenden (j)?"
-    LDX #$4A                        ; "J"
+    LDX #$41                        ; "A"
     LDY #$80                        ; RETURN ?
     JSR L34E3
     BCS L2808
@@ -5449,7 +5449,7 @@ L283C
     STA $6E
     LDA #$17                        ; msg. No. "Grafik l",$7C,"schen (j/n)?"
     LDX #$4E                        ; "N"
-    LDY #$4A                        ; "J"
+    LDY #$41                        ; "A"
     JSR L34E3
     BCS L28B6
     PHA
@@ -7504,15 +7504,15 @@ msg_table
 ; 0d, $367F
     !tx "F1=Text, F3=Obraz, F5=Okraj, F7=Ozna",$8A,".",$0D 
 ; 0e, $36A7
-    !tx $3B,"A",$3A,"v",$90,"echno nebo ",$3B,"B",$3A,$8A,$82,"st?",$0D
+    !tx $3B,"v",$3A,$90,"echno nebo ",$3B,"c",$3A,$82,"st?",$0D
 ; 0f, $36BF
     !tx "Jm",$83,"no",$7C,$0D
 ; 10, $36C5
-    !tx $3B,"G",$3A," celkov",$7E," obraz nebo ",$3B,"B",$3A," obrazovka?",$0D
+    !tx $3B,"c",$3A,"el",$82," obrazovka nebo ",$3B,"v",$3A,"iditeln",$82,"?",$0D
 ; 11, $36E5
-    !tx "Opravdu konec (j)?",$0D
+    !tx "Opravdu konec (a)?",$0D
 ; 12, $36FB
-    !tx "P",$8F,"ipojit (j/n)?",$0D
+    !tx "P",$8F,"ipojit (a/n)?",$0D
 ; 13, $370A
     !tx "ZS",$0D
 ; 14, $370D
@@ -7527,7 +7527,7 @@ msg_table
 ; 16, $3744
     !tx "Sorry, nen",$84," tam!",$0D
 ; 17, $3755
-    !tx "Smazat grafiku (j/n)?",$0D
+    !tx "Smazat grafiku (a/n)?",$0D
 ; 18, $376B
 !if VERSION = 1.2 {
     !tx "Zalo",$3E,"it roz",$90,$84,$8F,"en",$7E," disk",$0D
@@ -7540,7 +7540,7 @@ msg_table
 ; 1a, $378D
     !tx "Nov",$7E,$7C,$0D
 ; 1b, $3792
-    !tx "Rozli",$90,"it velk",$82,"/mal",$82," (j/n)?",$0D
+    !tx "Rozli",$90,"it velk",$82,"/mal",$82," (a/n)?",$0D
 ; 1c, $37AD
     !tx "RETURN=D",$82,"le",$0D
 ; 1d, $37BB
