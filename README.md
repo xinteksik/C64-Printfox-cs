@@ -9,6 +9,7 @@ This project is based on C64-Printfox by Claus Schlereth (MIT License).
 
 
 #### Stav překladu a obsah
+- rozložení klávesníce jako na psacím stroji (čísla píšou v základu diakritiku, se SHIFT čísla a s CBM specíální znaky)
 - všechny znaky jsou snad opraveny
 - všechny hlášky jsou s diakritikou
 - opravené ostré závorky v tiskovýh souborech 
@@ -16,5 +17,4 @@ This project is based on C64-Printfox by Claus Schlereth (MIT License).
 - verze 1.3 umí fungovat i z jiné mechaniky dle číselného označení
 
 #### Na čem pracuji
-- rozložení klávesníce jako na psacím stroji (čísla píšou v základu diakritiku, se SHIFT čísla a s CBM specíální znaky)
 - upravený XF soubor pro načítání i jiných XF souborů (z verze od CPC)
