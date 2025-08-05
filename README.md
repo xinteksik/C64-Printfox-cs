@@ -13,12 +13,12 @@ This project is based on C64-Printfox by Claus Schlereth (MIT License).
 - obraz diskety Printfox v1.2 2025 cs.d81 obsahující fonty a upravenou verzi XF pro načítání více pluginů - např. multidisk (obdoba co je ve verzi 1.3), podpora REU v grafickém režimu a původní plugin
 
 #### Screenshot
-Kompletní přemapování klávesnice dle českého rozložení.
+Kompletní přemapování klávesnice dle českého rozložení (KEYB = 1).
 
 <img width="640" height="480" alt="screen03" src="https://github.com/user-attachments/assets/373f1cbf-d11e-48f7-b37d-013b7c7b24f4" />
 
 
-Původní přemapování klávesnice.
+Původní přemapování klávesnice (KEYB = 1)
 
 <img width="640" height="480" alt="screen01" src="https://github.com/user-attachments/assets/8da4f173-f14b-4458-936c-93abaf0aa9bd" />
 
