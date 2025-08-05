@@ -17,7 +17,7 @@ Kompletní přemapování klávesnice dle českého rozložení (KEYB = 2).
 
 <img width="640" height="480" alt="screen03" src="https://github.com/user-attachments/assets/373f1cbf-d11e-48f7-b37d-013b7c7b24f4" />
 
-<img width="716" height="540" alt="screen04" src="https://github.com/user-attachments/assets/10458799-9983-4126-bdc8-700263fabc38" />
+<img width="640" height="480" alt="screen04" src="https://github.com/user-attachments/assets/10458799-9983-4126-bdc8-700263fabc38" />
 
 
 Původní přemapování klávesnice (KEYB = 1)
