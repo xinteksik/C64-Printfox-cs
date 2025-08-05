@@ -1,0 +1,75 @@
+Printfoxspeichererweiterung fÅr Printfox 1.1 und Printfox 1.2
+
+
+Erstmal was der Ordnung halber:
+
+DER AUTOR (Mathias Beilstein) öBERNIMMT KEINERLEI HAFTUNG FöR SCHéDEN ALLER
+ART, DIE DURCH DIESES PROGRAMM AN HARD- ODER SOFTWARE ENTSTEHEN.GLEICHZEITIG
+öBERNIMMT ER KEINE GARANTIE FöR EINE FEHLERFREIE PROGRAMMAUSFöHRUNG.
+EBENSO WIRD KEINE HAFTUNG FöR DIE EIGNUNG DES PROGRAMMES ZU IRGENDEINEM ZWECK
+öBERNOMMEN.
+
+Es handelt sich um eine an der Systemschnittstelle ( CBM + X ) programmierte
+Erweiterung des Printfoxes der Firma Scanntronic.
+Das Programm entstand im Jahre 1991. Alle BemÅhungen es Åber die Firma
+Scanntronic zu vermarkten schlugen fehl. Deshalb gebe ich es als Shareware
+ohne RegistrierungsgebÅhr frei. Sollte jemand Interesse an den Sourcen haben,
+mîge er mich unter FIDO Mathias Beilstein@2:2410/229.17 anschreiben und gegen
+eine kleine Spende lÑ·t sich sicher etwas machen.
+
+Das Programm ermîglicht dem Printfoxbenutzer eine gesamte Seite im Speicher des
+C64 / C128 zu halten, so er eine der unterstÅtzten Speichererweiterungen sein
+eigen nennt.
+UnterstÅtzt werden :
+
+       - alle Commodore-REUs also 1700, 1764, 1750
+       - der 64kbyte Ram im C128 80 Zeichen Controller
+                (in einigen C128 ist nur 16 kbyte vorhanden,
+                da hilft nur Chips tauschen gegen 2 x 64 kbit x 4 (41464))
+       - dem Pagefoxmodul oder dazu kompatiblem Ramerweiterungen.
+
+Zuerst mu· das Diskettenimage "Printfox.d64" auf den C64/C128 Åbertragen werden.
+Dazu eignet sich der Starcommander von Joe Foster oder Trans64 von Bernhard
+Schwall. Das Directory sollte wie folgt aussehen:
+
+
+0    "printfox erweite" 13 2a
+5    "install(c)"       prg<
+0    "----------------" del<
+0    "copyright by"     del<
+0    "mathias"          del<
+0    "beilstein"        del<
+0    "----------------" del<
+1    "17xxv1.1"         prg<
+1    "17xxv1.2"         prg<
+3    "vdc64k1mv1.1"     prg<
+3    "vdc64k1mv1.2"     prg<
+3    "vdc64k2mv1.1"     prg<
+3    "vdc64k2mv1.2"     prg<
+2    "pfram1mhzv1.1"    prg<
+2    "pfram1mhzv1.2"    prg<
+2    "xf"               prg 
+639 blocks free.
+
+Zur Auswahl der Version des Printfoxes und der Art der Speichererweiterung
+dient das Programm "install(c)" auf der Diskette.
+Nach der Installation ist der Printfox zu laden und im Textmodus nach dem
+Einlegen der Speichererweiterungsdiskette( die oben ist gemeint) die
+Commodoretaste und x zu drÅcken.
+Es wird zum Einlegen der Erweiterungsdisk aufgefordert. Mit Space bestÑtigen und
+das wars auch schon.
+
+Im Grafikmodus kann jetzt mit F5 die Halbseiten ausgetauscht werden.
+Noch ein Hinweis: wird im Grafikeditor gemalt oder sonst wie manipuliert, vor
+dem DrÅcken der F5-Taste erst das Werkzeug wechseln, weil erst dann in den
+Speicher geschrieben wird, sonst kommen die letzten énderungen nicht im
+erweiterten Speicher an.
+Ein kleinen Bonus hat der C128 noch mit den 80-Zeichen Ram. Es kann am
+80-Zeichen Bildschirm die Halbseite betrachtet werden.
+Das Programm ist von verschiedener Seite getestet worden, sollte sich doch mal
+ein Fehler zeigen, ich habe immer ein offenes Ohr.
+
+In diesem Sinne viel Spa· beim Layouten
+
+Mathias
+

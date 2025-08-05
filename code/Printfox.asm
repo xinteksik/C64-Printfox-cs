@@ -41,6 +41,7 @@
 
 !source "../code/c64symb.asm"
 
+
 ; select the version here
 VERSION = 1.3
 ; select the keyboard 1=DE 2=CS
@@ -7519,17 +7520,17 @@ L355E
 ; L355F
 msg_table
 ;00
-    !tx "Syntax chyba ve Formát. radku",$0D
+	!tx "Syntax chyba ve Form. radku",$0D
 ;01
     !tx "Generuji",$0D
 ;02
-    !tx "Chyba rozsahu",$0D
+	!tx "Chyba rozsahu",$0D
 ;03
     !tx "Chyba!",$0d
 ;04
     !tx "Preteceni pameti",$0D
 ;05
-    !tx "Kter",$82," p",$86,"lka (1/2)?",$0D
+    !tx "Kter",$82," p",$86,"lka (1/2)?",$00,$0D
 ;06
 ; Screen row 1 (< PRINTFOX >)
     !by $1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E
@@ -7548,45 +7549,47 @@ msg_table
     !by $0D
 
 ; 08, $3610
-    !tx "Ozna",$8A," konec, pak RETURN",$0D
-; 09, $362C
-    !tx "Ozna",$8A," c",$84,"l, pak RETURN",$0D
+    !tx "Ozna",$8A," konec, pak RETURN",$20,$20,$20,$20,$0D
+ ; 09, $362C
+	!tx "Ozna",$8A," c",$84,"l, pak RETURN",$20,$20,$20,$20,$20,$20,$0D
 ; 0a, $3648  
-    !tx "SPACE=D",$82,"le, CRSR/RETURN=Na",$8a,$84,"st",$0D 
+    !tx "SPACE=D",$82,"le, CRSR/RETURN=Na",$8a,$84,"st ",$0D 
 ; 0b, $3668
     !tx "P",$8F,$84,"kaz",$7C,$0D
 ; 0c, $3670
-    !tx "Voln",$7E,"ch znak",$86,$7C,$0D
+    ;!tx "Freie Zeichen:",$0D
+	!tx "Voln",$7E,"ch znak",$86,$7C,$0D
 ; 0d, $367F
-    !tx "F1=Text, F3=Obraz, F5=Okraj, F7=Ozna",$8A,".",$0D 
+    !tx "F1=Text, F3=Obraz, F5=Okraj, F7=Ozna",$8A,".",$20,$0D 
 ; 0e, $36A7
-    !tx $3B,"v",$3A,$90,"echno nebo ",$3B,"c",$3A,$82,"st?",$0D
+	!tx $3B,"v",$3A,$90,"echno nebo ",$3B,"c",$3A,$82,"st? ",$0D
 ; 0f, $36BF
-    !tx "Jm",$83,"no",$7C,$0D
+    !tx "Name",$7C,$0D
 ; 10, $36C5
-    !tx $3B,"c",$3A,"el",$82," obrazovka nebo ",$3B,"v",$3A,"iditeln",$82,"?",$0D
+    !tx $3B,"c",$3A,"el",$7E," obraz nebo ",$3B,"v",$3A,"iditeln",$82,"?",$20,$0D
 ; 11, $36E5
-    !tx "Opravdu konec (a)?",$0D
+	!tx "Opravdu konec (a)?   ",$0D
 ; 12, $36FB
-    !tx "P",$8F,"ipojit (a/n)?",$0D
+    !tx "P",$8F,"ipojit(a/n)?",$0D
 ; 13, $370A
     !tx "ZS",$0D
 ; 14, $370D
 !if VERSION = 1.2 {
-    !tx "Zalo",$3E,"it znakovou disketu",$0D
+    ;!tx "Zeichensatzdiskette einlegen",$0D
+	!tx "Zalozit znakovou disketu    ",$0D
 }
 !if VERSION = 1.3 {
     !tx "ZS Disk",$7C,$0D
 }
 ; 15, $372A
-    !tx "Zalo",$3E,"it programov",$7E," disk",$0D
+	!tx "Zalo",$3E,"it programov",$7E," disk  ",$0D
 ; 16, $3744
     !tx "Sorry, nen",$84," tam!",$0D
 ; 17, $3755
     !tx "Smazat grafiku (a/n)?",$0D
 ; 18, $376B
 !if VERSION = 1.2 {
-    !tx "Zalo",$3E,"it roz",$90,$84,$8F,"en",$7E," disk",$0D
+	!tx "Zalo",$3E,"it roz",$90,$84,$8F,"en",$7E," disk   ",$0D
     }
 !if VERSION = 1.3 {
     !tx "EW Disk",$7C,$0D
@@ -7594,13 +7597,16 @@ msg_table
 ; 19, $3785
     !tx "Hledat",$7C,$0D
 ; 1a, $378D
-    !tx "Nov",$7E,$7C,$0D
+    !tx "Nov",$7E,$0D
 ; 1b, $3792
-    !tx "Rozli",$90,"it velk",$82,"/mal",$82," (a/n)?",$0D
+    ;!tx "Gro",$7E,"/klein beachten (j/n)?",$0D
+	!tx "Rozli",$90,"it velk",$82,"/mal",$82," (a/n)?",$0D
 ; 1c, $37AD
-    !tx "RETURN=D",$82,"le",$0D
+    ;!tx "RETURN=weiter",$0D
+	!tx "RETURN=D",$82,"le",$0D
 ; 1d, $37BB
-    !tx "RETURN=Nahradit, SPACE=P",$8F,"esko",$8A,"it",$0D
+    ;!tx "RETURN=Ersetzen, SPACE=",$5D,"berspringen",$0D
+	!tx "RETURN=Nahradit, SPACE=P",$8F,"esko",$8A,"it",$0D
 
 !if VERSION = 1.3 {
 ; 1e
@@ -7849,7 +7855,6 @@ store_BA
     !by $03,$1A,$7E,$18,$18,$18,$0E,$00			;ť	91
     !by $00,$00,$00,$00,$00,$00,$00,$00			;	92
     !by $00,$00,$00,$00,$00,$00,$00,$00			;	93
-
 
 ; -------------------------------
 ; v1.3
