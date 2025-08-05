@@ -7530,7 +7530,7 @@ msg_table
 ;04
     !tx "Preteceni pameti",$0D
 ;05
-    !tx "Kter",$82," p",$86,"lka (1/2)?",$00,$0D
+    !tx "Kter",$82," p",$86,"lka (1/2)?",$0e,$0D
 ;06
 ; Screen row 1 (< PRINTFOX >)
     !by $1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E
