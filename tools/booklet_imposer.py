@@ -1,98 +1,78 @@
 #!/usr/bin/env python3
-"""
-booklet_imposer.py
-
-Take a portrait PDF (single pages) and rearrange + impose it into a booklet-ready PDF:
-- Pages are re-ordered into booklet (signature) order.
-- Two input pages are placed side-by-side on one landscape sheet (left/right),
-  producing a PDF ready for duplex printing (flip on short edge), then fold in half.
-
-Usage:
-  python booklet_imposer.py input.pdf output.pdf
-
-Options:
-  --reorder-only    Only reorder pages (no 2-up imposition). Output keeps original page size.
-
-Notes:
-- If the number of pages is not divisible by 4, blank pages are added automatically.
-- For duplex print, select "Flip on SHORT edge" (sometimes called "short-edge binding").
-"""
-
 import argparse
 from pypdf import PdfReader, PdfWriter, PageObject, Transformation
 
 
-def compute_booklet_pairs(total_pages: int):
-    """
-    Return a list of tuples representing each sheet side:
-    [(left_idx, right_idx), (left_idx, right_idx), ...]
-    where indices are 1-based into the padded document (blanks beyond original pages).
-    The order alternates: first pair = front of sheet 1, second pair = back of sheet 1, etc.
-    """
-    m = ((total_pages + 3) // 4) * 4  # pad to multiple of 4
+def parse_range(pages_str, total_pages):
+    """Parse 'start-end', 'start-', or '-end' into 1-based start/end."""
+    if not pages_str:
+        return 1, total_pages
+    parts = pages_str.split("-")
+    if len(parts) != 2:
+        raise ValueError("Invalid page range format. Use start-end, start-, or -end.")
+    start_str, end_str = parts
+    start = int(start_str) if start_str.strip() else 1
+    end = int(end_str) if end_str.strip() else total_pages
+    if start < 1 or end > total_pages or start > end:
+        raise ValueError(f"Invalid range {start}-{end} for document with {total_pages} pages.")
+    return start, end
+
+
+def compute_booklet_pairs(total_pages):
+    """Return booklet page order pairs."""
+    m = ((total_pages + 3) // 4) * 4
     pairs = []
     for i in range(m // 4):
-        # 1-based indices for booklet order
         front_left = m - 2 * i
         front_right = 1 + 2 * i
         back_left = 2 + 2 * i
         back_right = m - 1 - 2 * i
-        pairs.append((front_left, front_right))  # front side
-        pairs.append((back_left, back_right))    # back side
+        pairs.append((front_left, front_right))
+        pairs.append((back_left, back_right))
     return m, pairs
 
 
-def get_page(reader: PdfReader, index_1based: int, w: float, h: float, total_original: int):
-    """
-    Return a page object for the given 1-based index. If it exceeds the original
-    page count, return a blank page of size (w x h).
-    """
-    if 1 <= index_1based <= total_original:
-        page = reader.pages[index_1based - 1]
-        return page
+def get_page(pages, index_1based, w, h):
+    """Return page object or blank page."""
+    if 1 <= index_1based <= len(pages):
+        return pages[index_1based - 1]
     else:
-        # blank filler page
         return PageObject.create_blank_page(width=w, height=h)
 
 
-def impose_booklet(input_path: str, output_path: str, reorder_only: bool = False):
-    reader = PdfReader(input_path)
-    writer = PdfWriter()
+def impose_booklet(input_path, output_path, reorder_only=False, page_range=None):
+    reader_full = PdfReader(input_path)
+    total_original = len(reader_full.pages)
 
-    if len(reader.pages) == 0:
-        raise ValueError("Input PDF has no pages.")
+    start, end = parse_range(page_range, total_original) if page_range else (1, total_original)
 
-    # Use the first page as size reference
-    ref_page = reader.pages[0]
-    w = float(ref_page.mediabox.width)
-    h = float(ref_page.mediabox.height)
+    # Vyber jen zadané stránky (kopie seznamu, ne nový PDF objekt)
+    selected_pages = [reader_full.pages[i] for i in range(start - 1, end)]
 
-    n = len(reader.pages)
+    if not selected_pages:
+        raise ValueError("No pages selected.")
+
+    w = float(selected_pages[0].mediabox.width)
+    h = float(selected_pages[0].mediabox.height)
+
+    n = len(selected_pages)
     padded_count, pairs = compute_booklet_pairs(n)
 
+    writer = PdfWriter()
     if reorder_only:
-        # Just output the pages in booklet reading order (not imposed 2-up)
-        # Convert pair list into a flat order: left, right, left, right, ...
         flat_order = [idx for pair in pairs for idx in pair]
         for idx in flat_order:
-            page = get_page(reader, idx, w, h, n)
-            # Clone the page to avoid mutating original objects
+            page = get_page(selected_pages, idx, w, h)
             writer.add_page(page)
     else:
-        # Create landscape sheets sized 2*w by h, and place left/right pages
         for left_idx, right_idx in pairs:
-            left_page = get_page(reader, left_idx, w, h, n)
-            right_page = get_page(reader, right_idx, w, h, n)
-
+            left_page = get_page(selected_pages, left_idx, w, h)
+            right_page = get_page(selected_pages, right_idx, w, h)
             sheet = PageObject.create_blank_page(width=2 * w, height=h)
-
-            # Normalize rotations if any (merge_transformed_page applies transformation matrix)
             t_left = Transformation().translate(0, 0)
             t_right = Transformation().translate(w, 0)
-
             sheet.merge_transformed_page(left_page, t_left, expand=False)
             sheet.merge_transformed_page(right_page, t_right, expand=False)
-
             writer.add_page(sheet)
 
     with open(output_path, "wb") as f:
@@ -100,14 +80,14 @@ def impose_booklet(input_path: str, output_path: str, reorder_only: bool = False
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Impose a portrait PDF into booklet order (ready for duplex print).")
+    parser = argparse.ArgumentParser(description="Impose a portrait PDF into booklet order.")
     parser.add_argument("input", help="Path to input PDF")
     parser.add_argument("output", help="Path to output PDF")
-    parser.add_argument("--reorder-only", action="store_true",
-                        help="Only reorder pages into booklet reading order (no 2-up imposition)")
-
+    parser.add_argument("--pages", help="Page range in format start-end, start-, or -end", default=None)
+    parser.add_argument("--reorder-only", action="store_true", help="Only reorder pages (no 2-up imposition)")
     args = parser.parse_args()
-    impose_booklet(args.input, args.output, reorder_only=args.reorder_only)
+
+    impose_booklet(args.input, args.output, reorder_only=args.reorder_only, page_range=args.pages)
 
 
 if __name__ == "__main__":
