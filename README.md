@@ -25,3 +25,6 @@ Původní přemapování klávesnice (KEYB = 1)
 <img width="640" height="480" alt="screen01" src="https://github.com/user-attachments/assets/8da4f173-f14b-4458-936c-93abaf0aa9bd" />
 
 <img width="640" height="480" alt="screen2" src="https://github.com/user-attachments/assets/24ce9d67-a94d-4f9e-8b0e-07f3ce5c0d2a" />
+
+
+![Profile Views](https://github-vistors-counter.onrender.com/github?username=xinteksik)
